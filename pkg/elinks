@@ -1,0 +1,30 @@
+[mirrors]
+http://elinks.or.cz/download/elinks-current-0.13.tar.bz2
+
+[vars]
+filesize=2925803
+sha512=ef8f7d9b9167bd46f950d0ffe6afcfb60873410b3a49cc94e8e1415b540404c58f9067061ab9db6b2313690f221145cda143a905bedc54161c1650f541d80e5c
+pkgver=1
+tardir=elinks-0.13-20210211
+
+[deps]
+
+[build]
+#patch -p1 < "$K"/some.patch
+#cp -f "$K"/config.sub .
+[ -n "$CROSS_COMPILE" ] && \
+  xconfflags="--host=$($CC -dumpmachine) \
+  --with-sysroot=$butch_root_dir"
+
+./autogen.sh
+CPPFLAGS="-D_GNU_SOURCE" CFLAGS="$optcflags" CXXFLAGS="$optcflags" \
+LDFLAGS="$optldflags -Wl,-rpath-link=$butch_root_dir$butch_prefix/lib" \
+  ./configure -C --prefix="$butch_prefix" --disable-nls $xconfflags \
+  --disable-x --without-x \
+  #--with-python=/opt/python/lib
+
+#[ -n "$CROSS_COMPILE" ] && "$K"/libtool.cross.gen --sysroot="$butch_root_dir"
+
+make V=1 -j$MAKE_THREADS
+make DESTDIR="$butch_install_dir" install
+
