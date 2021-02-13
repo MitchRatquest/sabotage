@@ -1,0 +1,19 @@
+[mirrors]
+http://ftp.jaist.ac.jp/pub/Linux/kernel.org/linux/utils/kernel/kexec/kexec-tools-2.0.21.tar.gz
+
+[vars]
+filesize=428527
+sha512=d2877e5e45db81214cfaf96ad9b6baca0b06d71e9ab4f2e4b1e9840dd6b99e9ba81601548c92174665024b463611dcf8876081ddeb707ab30e5554694bfb5973
+pkgver=1
+STATICBUILD=1
+[deps]
+
+[build]
+
+CFLAGS="$optcflags" LDFLAGS="$optldflags -static" \
+  ./configure -C --prefix="$butch_prefix" $xconfflags \
+  --without-xen --sbindir="$butch_prefix"/bin \
+
+
+make -j$MAKE_THREADS
+make DESTDIR="$butch_install_dir" install
