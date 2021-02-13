@@ -1,0 +1,21 @@
+[mirrors]
+https://github.com/hundredrabbits/Orca-c/archive/master.zip
+
+[vars]
+filesize=95389
+sha512=7981332188481c41e36567fc4d554e645e4d136413bd9d28df71475a0a4273435e7e6f7bd052432f419f76fb86fdbde6ea27f4140abe7f98ad84977c4b9a8727
+pkgver=1
+tardir=Orca-c-master
+
+[deps]
+netbsd-curses
+portaudio
+ncurses
+
+[build]
+
+chmod 777 tool
+./tool build --no-portmidi --static --mouse orca
+mkdir -p /opt/orca/bin
+cp -a build/orca /opt/orca/bin/orca
+ln -sf /opt/orca/bin/orca /bin/orca 
