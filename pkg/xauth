@@ -3,6 +3,7 @@ libx11
 libxext
 libxmu
 libxau
+libxdmcp
 
 [vars]
 filesize=129568
