@@ -6,7 +6,6 @@ filesize=61843
 sha512=2a5b527a78cc1084c3b96d8d621b002ee86d377776d7e25f711dc2869e59bcd6277cc5f103549fe0b635b1368228a66941d5069fd1240cff678b308d7e17218d
 pkgver=1
 tardir=bmon-4.0
-STATICBUILD=1
 
 [deps]
 netbsd-curses

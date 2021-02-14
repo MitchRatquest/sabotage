@@ -8,7 +8,6 @@ sha512=8934544a19ded61344d83ff2cab501e86f17f8ae338892e0c36c2d2d8e63c76817840a007
 pkgver=9
 desc='GNU grep with more features than busybox grep'
 no_unlink=1
-STATICBUILD=1
 
 [deps]
 xz
