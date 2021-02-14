@@ -6,6 +6,7 @@ filesize=3767238
 sha512=77a53c4294fc332006502dc3af069346e2c9efc9240de7f91eb48e89043525900b5b23652cfd159221c3a482cc01e263611adb752e23b707f965156e3a7cd895
 pkgver=10
 desc="tls and crypto library. replaces openssl"
+DYNAMIC=1
 
 [deps]
 
