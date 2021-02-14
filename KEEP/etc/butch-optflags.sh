@@ -59,7 +59,9 @@ if [ "$SECURE" = 1 ] ; then
 	optldflags="$optldflags -fpie"
 fi
 
-optldflags="$optldflags -static --static"
+if [ "$DYNAMIC" != 1 ] ; then
+	optldflags="$optldflags -static --static"
+fi
 
 if test "$1" = --dump ; then
 	printf 'CFLAGS="%s"\n' "$optcflags"
