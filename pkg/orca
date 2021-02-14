@@ -1,9 +1,9 @@
 [mirrors]
-https://github.com/hundredrabbits/Orca-c/archive/master.zip
+https://github.com/hundredrabbits/Orca-c/archive/master.tar.gz
 
 [vars]
-filesize=95389
-sha512=7981332188481c41e36567fc4d554e645e4d136413bd9d28df71475a0a4273435e7e6f7bd052432f419f76fb86fdbde6ea27f4140abe7f98ad84977c4b9a8727
+filesize=80314
+sha512=14b38a623c1c9492ee37b680c4cb79e1565e4be5dbd8adb3e3efb6be9ee38c97caf494733356b84cda9773dd8261cd3bf618e15e6d336ba0993bc28f85199942
 pkgver=1
 tardir=Orca-c-master
 
@@ -11,6 +11,7 @@ tardir=Orca-c-master
 netbsd-curses
 portaudio
 ncurses
+wget
 
 [build]
 
