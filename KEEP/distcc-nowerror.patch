@@ -1,0 +1,12 @@
+--- Makefile.in
++++ Makefile.in
+@@ -16,7 +16,7 @@
+ # so they have to be done here rather than written into config.h.
+ 
+ CFLAGS = @CFLAGS@
+-WERROR_CFLAGS = @WERROR_CFLAGS@
++WERROR_CFLAGS =
+ PYTHON_CFLAGS = @PYTHON_CFLAGS@
+ POPT_CFLAGS = @POPT_CFLAGS@
+ POPT_INCLUDES = @POPT_INCLUDES@
+
