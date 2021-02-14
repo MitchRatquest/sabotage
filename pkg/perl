@@ -6,6 +6,7 @@ filesize=11574740
 sha512=139c92c0ea0ee7bd5912ad52cc275e0732ceb0865d8b67c301e1fc5a96ae126a26432b4450a2bbc7fe65b8e1dd8adde92ea2cc91ee39cb13ec3c5096e8f787ec
 pkgver=4
 desc='interpreter for the perl 5.x scripting language'
+DYNAMIC=1
 
 [deps]
 
