@@ -60,6 +60,7 @@ if [ "$SECURE" = 1 ] ; then
 fi
 
 if [ "$STATICBUILD" = 1 ] ; then
+	optcflags="$optcflags -fPIC -static"
 	optldflags="$optldflags -static --static"
 fi
 
