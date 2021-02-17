@@ -1,11 +1,11 @@
 [mirrors]
-https://github.com/hundredrabbits/Orca-c/archive/master.tar.gz
+https://github.com/hundredrabbits/Orca-c/archive/5ba56ca67baae3db140f8b7a2b2fc46bbac5602f.tar.gz
 
 [vars]
-filesize=80314
-sha512=14b38a623c1c9492ee37b680c4cb79e1565e4be5dbd8adb3e3efb6be9ee38c97caf494733356b84cda9773dd8261cd3bf618e15e6d336ba0993bc28f85199942
+filesize=80347
+sha512=c30373f5d6a9f6153176b8f9cb2fa3aedf77d5995a1c254ce195ec7def87c251ffd0b0400a73e2eff65dca49e16cefe143d91bba30e0244178dcc96c6d9d0754
 pkgver=1
-tardir=Orca-c-master
+tardir=Orca-c-5ba56ca67baae3db140f8b7a2b2fc46bbac5602f
 
 [deps]
 netbsd-curses
@@ -14,9 +14,10 @@ ncurses
 wget
 
 [build]
-
-chmod 777 tool
+chmod 755 tool
 ./tool build --no-portmidi --static --mouse orca
 mkdir -p /opt/orca/bin
+mkdir -p /opt/orca/share
+cp -a examples/* /opt/orca/share/
 cp -a build/orca /opt/orca/bin/orca
 ln -sf /opt/orca/bin/orca /bin/orca 
