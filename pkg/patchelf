@@ -1,10 +1,11 @@
 [mirrors]
-http://hydra.nixos.org/build/1524660/download/3/patchelf-0.6.tar.gz
+https://github.com/NixOS/patchelf/releases/download/0.12/patchelf-0.12.tar.bz2
 
 [vars]
-filesize=139481
-sha512=90f4fe3184efe56bc95a8a560b74172db184443edc2b6827a78e55549fe96d539aa93bda03b07828766ee4f475d18e93c3b0caf2ee87228e9bd4d60a8152e9c4
+filesize=165069
+sha512=2322c11ed08378f5a5e84ce431519771794a008934e828fd778daf014d08a943e024ac1b82d7b3461acd050cc8d1212a05a0067814cc7447c162df8ffffcf7c1
 pkgver=1
+tardir=patchelf-0.12.20200827.8d3a16e
 
 [deps]
 
