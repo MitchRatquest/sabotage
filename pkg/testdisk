@@ -1,9 +1,9 @@
 [mirrors]
-https://www.cgsecurity.org/testdisk-7.1-WIP.tar.bz2
+https://www.cgsecurity.org/testdisk-7.2-WIP.tar.bz2
 
 [vars]
-filesize=707602
-sha512=e1399994c1a7fd77d7fdf48a34bb5a33cb1cc6ab968fdd17e6ba21e99950ed7a7b5b727916dcfa61162f2fc700e6922ae6d78d33e61e95238c9bedf6963e1562
+filesize=790407
+sha512=02bee84a1f68d6d8a3a79cf4d200d5bbaf857d6f546a2e23fca01d90701d784a2ddbac1735929074aec9bb9c10bb29f98edff59cf38af1fadfe9911972fa4f28
 pkgver=1
 desc='testdisk partition recovery and photorec file recovery tools'
 
