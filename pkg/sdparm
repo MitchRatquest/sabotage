@@ -1,0 +1,24 @@
+[mirrors]
+http://sg.danny.cz/sg/p/sdparm-1.11.tgz
+
+[vars]
+filesize=473501
+sha512=cb5d1dd351464fcc05005429bb8f452b05e6673b1dd8b699f762d005ab3e612b3b7d6ea400ffbd5e98e33e3e78da735d01705353b8a9b9567aac55a3f6b6d813
+pkgver=1
+tardir=sdparm-1.11
+
+[deps.host]
+autoconf
+libtool
+automake
+
+[build]
+./autogen.sh
+CFLAGS="$optcflags" CXXFLAGS="$optcflags" \
+   LDFLAGS="$optldflags -Wl,-rpath-link=$butch_root_dir$butch_prefix/lib" && \
+  ./configure -C --prefix="$butch_prefix" $xconfflags \
+  --disable-locales
+
+make -j$MAKE_THREADS
+make DESTDIR="$butch_install_dir" install
+
