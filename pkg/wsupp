@@ -2,10 +2,10 @@
 https://github.com/arsv/wsupp-libc/archive/007ebc7f597e45ba9b05e73f0d7134954bc5d851.tar.gz
 
 [vars]
-filesize=65809
-sha512=783b7d0b4bb2aa4e680fc6f0089f7ff43b4fe92fd867b28d58fe749ec21c74dabe0e504eec073482849d274b90974dc154ea81bb764a58f5b9fb5931eae659da
+filesize=65802
+sha512=96894c6b47b8f17a4fdeda97bd134b7a98c5de430a6fac24468f534d37c1c7371f2e00a1388944f2e370e645efcc3a8771dd9dfd0e8fc68da9358fb6e0af04dc
 tarball=wsupp-0.0.1-89759a87.tar.gz
-tardir=wsupp-libc-89759a8704570b8bd720d2ffebfd596dc1d0c762
+tardir=wsupp-libc-007ebc7f597e45ba9b05e73f0d7134954bc5d851
 desc='tiny replacement for wpa_supplicant. currently WPA2 only'
 pkgver=1
 service=wsupp
