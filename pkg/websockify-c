@@ -1,0 +1,26 @@
+[mirrors]
+https://github.com/novnc/websockify-other/archive/refs/heads/master.zip
+
+[vars]
+filesize=25574
+sha512=d1a5d04ea3be8131b79ada8086bd40342e77f70959a1ca9b55f0b771e762ebcb0996f50f104cdbf95c45c46c63c47fc2943b4db966fbb31140d108d2dcb420c0
+pkgver=1
+tardir=websockify-other-master
+
+#SPEED=1
+
+[deps]
+libressl
+
+[build]
+cd c
+sed -i 's|-lssl|-static -lssl|g' Makefile
+
+CFLAGS="$optcflags" CXXFLAGS="$optcflags" \
+   LDFLAGS="$optldflags -Wl,-rpath-link=$butch_root_dir$butch_prefix/lib" \
+   make -j$MAKE_TRHEADS
+
+mkdir -p /opt/websockify-c/bin
+cp websockify /opt/websockify-c/bin/websockify
+ln -s /opt/websockify-c/bin/websockify /bin/websockify
+
