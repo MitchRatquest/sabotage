@@ -1,0 +1,32 @@
+[mirrors]
+https://github.com/ipxe/ipxe/archive/refs/tags/v1.21.1.tar.gz
+
+[vars]
+filesize=3934045
+sha512=47400975110ed4ab95835aa1b7c8d5a6917c19c5713c6ab88bc0741a3adcd62245a9c4251d1f46fffc45289c6b18bf893f86dbc3b67d3189c41b7f198367ecaa
+pkgver=1
+tardir=ipxe-1.21.1
+
+[build]
+#https://gist.github.com/rikka0w0/50895b82cbec8a3a1e8c7707479824c1
+#ok the above link seems to work?
+cd src/
+# Enable NFS support
+sed -i 's/#undef\tDOWNLOAD_PROTO_NFS/#define\tDOWNLOAD_PROTO_NFS/' config/general.h
+
+# Enable Ping support
+sed -i 's/\/\/#define\ PING_CMD/#define\ PING_CMD/' config/general.h
+sed -i 's/\/\/#define\ IPSTAT_CMD/#define\ IPSTAT_CMD/' config/general.h
+sed -i 's/\/\/#define\ REBOOT_CMD/#define\ REBOOT_CMD/' config/general.h
+sed -i 's/\/\/#define\ POWEROFF/#define\ POWEROFF/' config/general.h
+
+
+echo -ne "#!ipxe\n\ndhcp\nchain chain tftp://${next-server}/main.ipxe || shell\n" > embed.ipxe
+CPPFLAGS="-D_GNU_SOURCE" CFLAGS="$optcflags" \
+LDFLAGS="$optldflags" \
+   make EMBED=embed.ipxe -j$MAKE_THREADS \
+   bin-i386-efi/ipxe.efi \
+   bin-x86_64-efi/ipxe.efi \
+   bin/undionly.kpxe
+
+
