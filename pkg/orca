@@ -1,0 +1,23 @@
+[mirrors]
+https://github.com/hundredrabbits/Orca-c/archive/5ba56ca67baae3db140f8b7a2b2fc46bbac5602f.tar.gz
+
+[vars]
+filesize=80347
+sha512=c30373f5d6a9f6153176b8f9cb2fa3aedf77d5995a1c254ce195ec7def87c251ffd0b0400a73e2eff65dca49e16cefe143d91bba30e0244178dcc96c6d9d0754
+pkgver=1
+tardir=Orca-c-5ba56ca67baae3db140f8b7a2b2fc46bbac5602f
+
+[deps]
+netbsd-curses
+portaudio
+ncurses
+wget
+
+[build]
+chmod 755 tool
+./tool build --no-portmidi --static --mouse orca
+mkdir -p /opt/orca/bin
+mkdir -p /opt/orca/share
+cp -a examples/* /opt/orca/share/
+cp -a build/orca /opt/orca/bin/orca
+ln -sf /opt/orca/bin/orca /bin/orca 

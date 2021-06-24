@@ -1,0 +1,21 @@
+[mirrors]
+https://github.com/madler/pigz/archive/v2.6.tar.gz
+
+[vars]
+filesize=113522
+sha512=7be794c24dc4c177db1f7531475e2b0e24379634d6b41b0757bbc45c56a03bc6cd965327db9b4a38ea56a5d985d7437ff81e690321d41dca98f1813c451e63b6
+pkgver=1
+tardir=pigz-2.6
+
+[build]
+LDFLAGS="$optldflags"
+CFLAGS="$optcflags"
+sed -i 's|^CFLAGS=|CFLAGS=-static |g' Makefile
+sed -i 's|^LDFLAGS=|LDFLAGS=-static |g' Makefile
+make -j$MAKE_THREADS
+mkdir -p /opt/pigz/bin/
+cp pigz unpigz /opt/pigz/bin
+ln -sf /opt/pigz/bin/pigz /bin/pigz
+ln -sf /opt/pigz/bin/unpigz /bin/unpigz
+
+

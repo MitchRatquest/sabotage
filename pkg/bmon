@@ -1,23 +1,33 @@
 [mirrors]
-https://github.com/NixOS/patchelf/releases/download/0.12/patchelf-0.12.tar.bz2
+https://github.com/tgraf/bmon/archive/v4.0.tar.gz
 
 [vars]
-filesize=165069
-sha512=2322c11ed08378f5a5e84ce431519771794a008934e828fd778daf014d08a943e024ac1b82d7b3461acd050cc8d1212a05a0067814cc7447c162df8ffffcf7c1
+filesize=61843
+sha512=2a5b527a78cc1084c3b96d8d621b002ee86d377776d7e25f711dc2869e59bcd6277cc5f103549fe0b635b1368228a66941d5069fd1240cff678b308d7e17218d
 pkgver=1
-STATICBUILD=1
+tardir=bmon-4.0
 
 [deps]
+netbsd-curses
+libconfuse
+libnl
 
 [build]
-# warning C++
+
+#patch -p1 < "$K"/some.patch
+#cp -f "$K"/config.sub .
 [ -n "$CROSS_COMPILE" ] && \
   xconfflags="--host=$($CC -dumpmachine) \
   --with-sysroot=$butch_root_dir"
 
+./autogen.sh
 CPPFLAGS="-D_GNU_SOURCE" CFLAGS="$optcflags" CXXFLAGS="$optcflags" \
 LDFLAGS="$optldflags -Wl,-rpath-link=$butch_root_dir$butch_prefix/lib" \
   ./configure -C --prefix="$butch_prefix" --disable-nls $xconfflags
 
+#[ -n "$CROSS_COMPILE" ] && "$K"/libtool.cross.gen --sysroot="$butch_root_dir"
+
 make V=1 -j$MAKE_THREADS
 make DESTDIR="$butch_install_dir" install
+
+

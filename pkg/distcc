@@ -1,0 +1,31 @@
+[mirrors]
+https://github.com/distcc/distcc/releases/download/v3.2rc1/distcc-3.2rc1.tar.gz
+
+[vars]
+filesize=936590
+sha512=b35a6bca5e7c43cefc3c31251dd57e06547213a29c88ab4e2337b01381afa5ec3a60b0baa3c27d5010527e9f45cc6db463b32bffe807bb5d7190700d41e620e8
+pkgver=1
+
+[deps]
+python
+autoconf
+automake
+
+[build]
+#cp -f "$K"/config.sub .
+[ -n "$CROSS_COMPILE" ] && \
+  xconfflags="--host=$($CC -dumpmachine) \
+  --with-sysroot=$butch_root_dir"
+
+./autogen.sh
+CPPFLAGS="-D_GNU_SOURCE" CFLAGS="$optcflags -D__TIME__=0 -D__DATE__=0" CXXFLAGS="$optcflags" \
+PYTHON="/opt/bin/python" \
+LDFLAGS="$optldflags -Wl,-rpath-link=$butch_root_dir$butch_prefix/lib" \
+  ./configure -C --prefix="$butch_prefix" --disable-nls $xconfflags \
+  --without-libiberty --enable-static=yes --enable-shared=no \
+  --without-avahi --with-included-popt --disable-Werror
+
+#[ -n "$CROSS_COMPILE" ] && "$K"/libtool.cross.gen --sysroot="$butch_root_dir"
+
+make V=1 -j$MAKE_THREADS
+make DESTDIR="$butch_install_dir" install

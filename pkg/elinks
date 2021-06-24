@@ -1,31 +1,30 @@
 [mirrors]
-https://download.gnome.org/sources/glade/2.12/glade-2.12.2.tar.bz2
+http://elinks.or.cz/download/elinks-current-0.13.tar.bz2
 
 [vars]
-filesize=1785723
-sha512=c59e2163fe7ad8be7ba1ae97c09026b879cd99c10509e27e1ed6beae1de7d0dd1dd710e75815c348e82cff6b02b604476a8494f2cbabbc1742fd0e4d2e26bcf6
-pkgver=2
-desc='gtk gui designer'
+filesize=2925803
+sha512=ef8f7d9b9167bd46f950d0ffe6afcfb60873410b3a49cc94e8e1415b540404c58f9067061ab9db6b2313690f221145cda143a905bedc54161c1650f541d80e5c
+pkgver=1
+tardir=elinks-0.13-20210211
 
 [deps]
-gtk+2
 
 [build]
-. "$K"/intltool-fix
-sed -i 's/INTLTOOL_MERGE=/#INTLTOOL_MERGE=/' configure
-
-patch -p1 < "$K"/glade-no-scrollkeeper.patch
-
+#patch -p1 < "$K"/some.patch
 #cp -f "$K"/config.sub .
 [ -n "$CROSS_COMPILE" ] && \
   xconfflags="--host=$($CC -dumpmachine) \
   --with-sysroot=$butch_root_dir"
 
+./autogen.sh
 CPPFLAGS="-D_GNU_SOURCE" CFLAGS="$optcflags" CXXFLAGS="$optcflags" \
 LDFLAGS="$optldflags -Wl,-rpath-link=$butch_root_dir$butch_prefix/lib" \
-  ./configure -C --prefix="$butch_prefix" --disable-nls $xconfflags
+  ./configure -C --prefix="$butch_prefix" --disable-nls $xconfflags \
+  --disable-x --without-x \
+  #--with-python=/opt/python/lib
 
 #[ -n "$CROSS_COMPILE" ] && "$K"/libtool.cross.gen --sysroot="$butch_root_dir"
 
 make V=1 -j$MAKE_THREADS
 make DESTDIR="$butch_install_dir" install
+

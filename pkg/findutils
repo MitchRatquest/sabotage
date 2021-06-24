@@ -1,0 +1,17 @@
+[mirrors]
+ftp://ftp.gnu.org/gnu/findutils/findutils-4.8.0.tar.xz
+
+[vars]
+filesize=1983096
+sha512=eaa2da304dbeb2cd659b9210ac37da1bde4cd665c12a818eca98541c5ed5cba1050641fc0c39c0a446a5a7a87a8d654df0e0e6b0cee21752ea485188c9f1071e
+pkgver=1
+
+[build]
+
+CFLAGS="$optcflags -static" LDFLAGS="$optldflags -static" \
+  ./configure -C --prefix="$butch_prefix" $xconfflags \
+  --disable-rpath  \
+  --disable-nls
+make -j$MAKE_THREADS READLINE_LIB=lib/readline/libreadline.a
+make DESTDIR="$butch_install_dir" install
+

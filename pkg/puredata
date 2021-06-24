@@ -1,0 +1,29 @@
+[mirrors]
+https://github.com/pure-data/pure-data/archive/0.51-4.tar.gz
+http://msp.ucsd.edu/Software/pd-0.51-4.src.tar.gz
+
+[vars]
+filesize=10043969
+sha512=87c5b81730b13d4770b5a158362c7d7143e5218a23be689a78532adaf472554c242dcc1ab989e04924c3e4617a363435a616b5e8d8a29045196ac6fe527722a8
+pkgver=1
+tardir=pure-data-0.51-4
+SPEED=1
+
+[deps]
+tcl
+tk
+alsa-lib
+autoconf
+libtool
+automake
+
+[build]
+./autogen.sh  CFLAGS="$optcflags" CXXFLAGS="$optcflags" \
+   LDFLAGS="$optldflags -Wl,-rpath-link=$butch_root_dir$butch_prefix/lib" && \
+  ./configure -C --prefix="$butch_prefix" $xconfflags \
+  --disable-locales --enable-shared=no \
+  --enable-static=yes --disable-portaudio
+
+make -j$MAKE_THREADS
+make DESTDIR="$butch_install_dir" install
+
