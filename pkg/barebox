@@ -1,0 +1,12 @@
+[mirrors]
+https://barebox.org/download/barebox-2021.06.0.tar.bz2
+
+[vars]
+filesize=9502040
+sha512=f16d3797883483bef504960035ec7d1870c234de687bf7a8263cc19d32eabf846730b88001e27a349d33f37a2fe76a6cc2c80b04cac5424bba32423793f6ea54
+pkgver=1
+
+[build]
+export ARCH=x86
+make efi_defconfig
+make -j$MAKE_THREADS
