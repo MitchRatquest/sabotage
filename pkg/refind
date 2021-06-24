@@ -1,0 +1,15 @@
+[mirrors]
+https://sourceforge.net/projects/refind/files/0.13.2/refind-src-0.13.2.tar.gz
+#https://gigenet.dl.sourceforge.net/project/refind/0.13.2/refind-src-0.13.2.tar.gz
+
+
+[vars]
+filesize=4554759
+sha512=e671d44385297295c143824dd95593f2e7bc8e282745d127b041a645aa27003467a3a23f368fd30297f33faa06bd914540d7bdc3c71ec42f6b7a38d7ee8e0ddb
+pkgver=1
+tardir=refind-0.13.2
+
+[build]
+CFLAGS="-D_GNU_SOURCE $optcflags $GNULIB_CPPFLAGS" LDFLAGS="$optldflags" make -j$MAKE_THREADS
+make DESTDIR="$butch_install_dir" install
+
